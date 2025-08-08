@@ -1,22 +1,22 @@
-from selenium.webdriver.common.by import By
 from locators.main_page_locators import MainPageLocators
+from pages.base_page import BasePage
 
-class MainPage:
+class MainPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
         self.locators = MainPageLocators()
 
-    def click_order_button(self):
-        self.driver.find_element(*self.locators.ORDER_BUTTON_TOP).click()
+    def click_order_button_top(self):
+        self.click(self.locators.ORDER_BUTTON_TOP)
 
     def click_order_button_bottom(self):
-        self.driver.find_element(*self.locators.ORDER_BUTTON_BOTTOM).click()
+        self.click(self.locators.ORDER_BUTTON_BOTTOM)
 
     def click_logo_scooter(self):
-        self.driver.find_element(*self.locators.LOGO_SCOOTER).click()
+        self.click(self.locators.LOGO_SCOOTER)
 
     def click_logo_yandex(self):
-        self.driver.find_element(*self.locators.LOGO_YANDEX).click()
+        self.click(self.locators.LOGO_YANDEX)
 
     def get_questions(self):
-        return self.driver.find_elements(*self.locators.QUESTIONS)
+        return self.find_all(self.locators.QUESTIONS)
